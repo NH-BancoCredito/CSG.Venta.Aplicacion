@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Venta.Aplicacion", "Venta.Aplicacion\Venta.Aplicacion.csproj", "{9962B0AE-16F8-4DDE-A794-658A289A9346}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Venta.Aplicacion", "Venta.Aplicacion\Venta.Aplicacion.csproj", "{9962B0AE-16F8-4DDE-A794-658A289A9346}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aplicacion", "Aplicacion", "{F409038D-1DE9-41C7-A683-3387C6FBB047}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dominio", "Dominio", "{82B1D1F9-D1E7-4505-AD46-4AF7A60C31C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{4865AE20-9A08-4F26-8A59-467DDD2BE31A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,6 +24,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9962B0AE-16F8-4DDE-A794-658A289A9346} = {F409038D-1DE9-41C7-A683-3387C6FBB047}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6A4A6157-3458-484F-B693-5268EA766B5A}
