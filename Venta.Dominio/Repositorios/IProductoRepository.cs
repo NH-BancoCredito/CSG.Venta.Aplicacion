@@ -19,6 +19,6 @@ namespace Venta.Dominio.Repositorios
 
         Task<IEnumerable<Producto>> Consultar(string nombre);
 
-
+        Task<Producto> ConsultarPorId(int id);
     }
 }

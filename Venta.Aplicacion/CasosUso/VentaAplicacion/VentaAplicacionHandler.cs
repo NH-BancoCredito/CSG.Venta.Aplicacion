@@ -7,13 +7,13 @@ namespace Venta.Aplicacion.CasosUso.VentaAplicacion
 {
     public class VentaAplicacionHandler
     {
-        private readonly IVentaAplicacionRepository _ventaRepository;
+        private readonly IVentaAplicacionRepository _ventaAplicacionRepository;
         private readonly IProductoRepository _productoRepository;
         private readonly IMapper _mapper;
 
-        public VentaAplicacionHandler(IVentaAplicacionRepository ventaRepository, IProductoRepository productoRepository, IMapper mapper)
+        public VentaAplicacionHandler(IVentaAplicacionRepository ventaAplicacionRepository, IProductoRepository productoRepository, IMapper mapper)
         {
-            _ventaRepository = ventaRepository;
+            _ventaAplicacionRepository = ventaAplicacionRepository;
             _productoRepository = productoRepository;
             _mapper = mapper;
         }
@@ -31,7 +31,8 @@ namespace Venta.Aplicacion.CasosUso.VentaAplicacion
             foreach (var detalle in venta.Detalle)
             {
                 //1 - Validar si el productos existe
-                var productoEncontrado = await _productoRepository.Consultar(detalle.IdProducto);
+                var productoEncontrado = await _productoRepository.ConsultarPorId(detalle.IdProducto);
+
                 if (productoEncontrado?.IdProducto <= 0)
                     throw new Exception($"Producto no encontrado, código {detalle.IdProducto}");
 
@@ -54,7 +55,7 @@ namespace Venta.Aplicacion.CasosUso.VentaAplicacion
             /// SI todo esta OK
             /// Registrar la venta - TODO
             /// 
-            if (!(await _ventaRepository.Registrar(venta)))
+            if (!(await _ventaAplicacionRepository.Registrar(venta)))
             {
                 throw new Exception($"Error al registrar venta, código {venta.IdVenta}");
             }
