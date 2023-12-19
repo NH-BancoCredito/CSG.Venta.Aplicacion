@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
+using MediatR;
 using System.Reflection;
 using Venta.Dominio.Repositorios;
 using Models = Venta.Dominio.Models;
 
 namespace Venta.Aplicacion.CasosUso.VentaAplicacion
 {
-    public class VentaAplicacionHandler
+    public class VentaAplicacionHandler : IRequestHandler<VentaAplicacionRequest, VentaAplicacionResponse>
     {
         private readonly IVentaAplicacionRepository _ventaAplicacionRepository;
         private readonly IProductoRepository _productoRepository;
@@ -18,7 +19,7 @@ namespace Venta.Aplicacion.CasosUso.VentaAplicacion
             _mapper = mapper;
         }
 
-        public async Task<VentaAplicacionResponse> Registrar(VentaAplicacionRequest request)
+        public async Task<VentaAplicacionResponse> Handle(VentaAplicacionRequest request, CancellationToken cancellationToken)
         {
             var response = new VentaAplicacionResponse();
 
@@ -47,7 +48,7 @@ namespace Venta.Aplicacion.CasosUso.VentaAplicacion
                 detalle.Producto = productoEncontrado;
                 //3.1 --Si sucedio algun erro al reservar el producto , retornar una exepcion
 
-                if(detalle == null)
+                if (detalle == null)
                     throw new Exception($"Error al reservar");
 
             }

@@ -28,25 +28,26 @@ namespace Venta.Aplicacion.Tests.AdministrarProductos
         [Fact]
         public async Task RegistraVentas()
         {
-            var request = setVentaRequest();
+            var request = ingresarVentaAplicacionRequest();
 
             var objProducto = new Producto() { IdProducto = 2, Stock = 30, StockMinimo = 1 };
 
             _productoRepository.ConsultarPorId(default(int)).ReturnsForAnyArgs(objProducto);
             _ventaAplicacionRepository.Registrar(default).ReturnsForAnyArgs(true);
 
-            var resultado = await _ventaAplicacionHandler.Registrar(request);
+            var resultado = await _ventaAplicacionHandler.Handle(request);
 
             Assert.True(resultado.VentaRegistrada);
 
 
         }
-        private VentaAplicacionRequest setVentaRequest()
+        private VentaAplicacionRequest ingresarVentaAplicacionRequest()
         {
             var registrarVentaDetalleRequest = new List<VentaDetalleAplicacionRequest>();
-            registrarVentaDetalleRequest.Add(new VentaDetalleAplicacionRequest() { Cantidad = 2, IdProducto = 3, Precio = 10 });
-            registrarVentaDetalleRequest.Add(new VentaDetalleAplicacionRequest() { Cantidad = 4, IdProducto = 10, Precio = 30 });
-            registrarVentaDetalleRequest.Add(new VentaDetalleAplicacionRequest() { Cantidad = 5, IdProducto = 7, Precio = 30 });
+            for (int i = 0; i < 5; i++)
+            {
+                registrarVentaDetalleRequest.Add(new VentaDetalleAplicacionRequest() { Cantidad = i + 1, IdProducto = i + 2, Precio = i + 5 });
+            }
             var registrarVentaRequest = new VentaAplicacionRequest() { IdCliente = 2, Productos = registrarVentaDetalleRequest };
             return registrarVentaRequest;
         }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using Venta.Dominio.Repositorios;
 
 namespace Venta.Applicacion.CasosUso.ConsultarProductos
 {
-    public class ConsultarProductosHandler
+    public class ConsultarProductosHandler : IRequestHandler<ConsultarProductosRequest, ConsultarProductosResponse>
     {
         private readonly IProductoRepository _productoRepository;
         private readonly IMapper _mapper;
@@ -19,7 +20,7 @@ namespace Venta.Applicacion.CasosUso.ConsultarProductos
             _mapper = mapper;
         }
 
-        public async Task<ConsultarProductosResponse> Handle(ConsultarProductosRequest request)
+        public async Task<ConsultarProductosResponse> Handle(ConsultarProductosRequest request, CancellationToken cancellationToken)
         {
             var response = new ConsultarProductosResponse();
 

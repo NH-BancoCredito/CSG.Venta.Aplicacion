@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediatR;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace Venta.Aplicacion.CasosUso.VentaAplicacion
         public int Precio { get; set; }
     }
 
-    public class VentaAplicacionRequest
+    public class VentaAplicacionRequest : IRequest<VentaAplicacionResponse>
     {
 
         public int IdCliente { get; set; }
