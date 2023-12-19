@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace Venta.Aplicacion.CasosUso.VentaAplicacion
 {
-    internal class VentaAplicacionRequest
+    public class VentaDetalleAplicacionRequest
     {
+        public int IdProducto { get; set; }
+
+        public int Cantidad { get; set; }
+
+        public int Precio { get; set; }
+    }
+
+    public class VentaAplicacionRequest
+    {
+
+        public int IdCliente { get; set; }
+
+        public IEnumerable<VentaDetalleAplicacionRequest> Productos { get; set; }
+
     }
 }
