@@ -15,7 +15,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddApplication();
 
 //Capa de infra
-builder.Services.AddInfraestructura();
+var connectionString = builder.Configuration.GetConnectionString("dbVenta-cnx");
+builder.Services.AddInfraestructura(connectionString);
 
 
 var app = builder.Build();
