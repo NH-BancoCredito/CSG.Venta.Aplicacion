@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Venta.Aplicacion.Common;
 
 namespace Venta.Aplicacion.CasosUso.VentaAplicacion
 {
@@ -16,7 +17,7 @@ namespace Venta.Aplicacion.CasosUso.VentaAplicacion
         public int Precio { get; set; }
     }
 
-    public class VentaAplicacionRequest : IRequest<VentaAplicacionResponse>
+    public class VentaAplicacionRequest : IRequest<IResult>
     {
 
         public int IdCliente { get; set; }

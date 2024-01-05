@@ -23,9 +23,9 @@ namespace Venta.Infraestructura.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<Producto> Consultar(int id)
+        public async Task<Producto> Consultar(int id)
         {
-            throw new NotImplementedException();
+            return await _ventaDbContext.Productos.FindAsync(id);
         }
 
         public async Task<IEnumerable<Producto>> Consultar(string nombre)

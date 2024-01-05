@@ -9,5 +9,6 @@ namespace Venta.Aplicacion.CasosUso.VentaAplicacion
     public class VentaAplicacionResponse
     {
         public bool VentaRegistrada { get; set; }
+        public string Mensages { get; set; }
     }
 }
