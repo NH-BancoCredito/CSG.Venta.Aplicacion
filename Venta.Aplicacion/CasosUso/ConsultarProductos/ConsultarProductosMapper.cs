@@ -13,7 +13,8 @@ namespace Venta.Applicacion.CasosUso.ConsultarProductos
     {
         public ConsultarProductosMapper()
         {
-            CreateMap<Producto, ConsultaProducto>();
+            CreateMap<Producto, ConsultaProducto>()
+                         .ForMember(dest => dest.CodigoProducto, opt => opt.MapFrom(src => src.IdProducto));
         }
     }
 }

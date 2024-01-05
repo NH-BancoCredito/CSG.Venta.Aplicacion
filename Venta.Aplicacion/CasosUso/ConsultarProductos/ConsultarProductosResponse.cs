@@ -14,6 +14,7 @@ namespace Venta.Applicacion.CasosUso.ConsultarProductos
     public class ConsultaProducto
     {
         public int IdProducto { get; set; }
+        public int CodigoProducto { get; set; }
         public string Nombre { get; set; }
         public int Stock { get; set; }
         public int StockMinimo { get; set; }
